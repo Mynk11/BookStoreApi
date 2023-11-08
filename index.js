@@ -1,5 +1,4 @@
 // Import required modules
-
 import dotenv from 'dotenv';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';

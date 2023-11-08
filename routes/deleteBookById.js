@@ -1,10 +1,11 @@
 import express from 'express';
 
+import checkValidId from '../middleware/checkValidId.js';
 import { Book } from '../models/bookStore.js';
 
 const deleteBookByIdRouter = express.Router();
 
-deleteBookByIdRouter.delete("/books/:id", async (req, res) => {
+deleteBookByIdRouter.delete("/books/:id", checkValidId, async (req, res) => {
   // Check if the book with the specified ID exists
   const { id } = req.params;
 
@@ -15,8 +16,9 @@ deleteBookByIdRouter.delete("/books/:id", async (req, res) => {
     if (!book) {
       return res.status(404).json({ error: "Book not found" });
     }
+    await Book.deleteOne({ _id: id });
 
-    res.json(book);
+    res.json(`Book ${book.title} deleted`);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

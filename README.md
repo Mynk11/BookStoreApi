@@ -40,9 +40,27 @@ Error Handling:
 
 The API handles errors gracefully, providing clear error messages and status codes in responses. For example, it responds with a 404 status code when a requested book is not found
 
+---
+
+Command for creating Docker Image
+
+- docker build -t brewapps/bookstore .
+  Command for publishing Docker Image
+- docker push brewapps/bookstore
+
 Imporvements that can de Added
 
 1. Project can be created using serverless
 2. Api's can be deployed on api gateway
 3. Mongo can be deployed on EC2
 4. Middleware can be added for better error checking (express-validator)
+
+To Run this project you need to add an .env file at the root directory of the project
+
+---
+
+Adding Sample of .env file
+
+MONGODB_URI=mongodb+srv://<username>:<password>@learning-cluster.hcskwwr.mongodb.net/bookstore?retryWrites=true&w=majority
+
+---

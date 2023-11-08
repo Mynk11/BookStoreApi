@@ -1,10 +1,11 @@
 import express from 'express';
 
+import checkValidId from '../middleware/checkValidId.js';
 import { Book } from '../models/bookStore.js';
 
 const updateBooksByIdRouter = express.Router();
 
-updateBooksByIdRouter.put("/books/:id", async (req, res) => {
+updateBooksByIdRouter.put("/books/:id", checkValidId, async (req, res) => {
   const { id } = req.params;
   const { title, author, summary } = req.body;
 
